@@ -8,16 +8,11 @@ import transformers as ppb
 class Vectorizer:
     def __init__(self, sentences):
         """
-        Args:
             sentences: A list of strings or sentences
         """
         self.batch = pd.DataFrame(sentences)
 
     def sent2vec_bert(self):
-        """
-        Returns:
-            features: A numpy array containing the feature vectors
-        """
         model_class, tokenizer_class, pretrained_weights = (ppb.DistilBertModel,
                                                             ppb.DistilBertTokenizer,
                                                             'distilbert-base-uncased')

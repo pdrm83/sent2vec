@@ -40,10 +40,12 @@ sentences = [
 vectorizer = Vectorizer(sentences)
 ```
 
-If you want to use the pre-trained DistilBertModel, you should use the code below. 
+If you want to use the pre-trained DistilBertModel, you must use the code below. 
 ```python
 vectors = vectorizer.sent2vec_bert()
 ```
+Now, you can compute distance between `vectors[0]` and `vectors[1]` as well as distance between `vectors[0]` and 
+`vectors[2]`. You can see that the third sentence is different from other sentences.
 
 And, that's pretty much it!
 
