@@ -22,7 +22,3 @@ def test_sent2vec_bert_02():
     vectorizer = Vectorizer(sentences)
     vectors = vectorizer.sent2vec_bert()
     assert distance.cosine(vectors[0], vectors[1]) < distance.cosine(vectors[0], vectors[2])
-
-
-test_sent2vec_bert_02()
-
