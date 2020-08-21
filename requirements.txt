@@ -1,4 +1,5 @@
-transformers
-pandas
+gensim
 numpy
+spacy
 torch
+transformers
