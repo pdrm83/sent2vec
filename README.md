@@ -30,8 +30,10 @@ pip3 install sent2vec
 ```
 
 ## Usage
-If you want to use the the `BERT` language model (more specifically, `distilbert-base-uncased`) to compute sentence 
-embedding, you must use the code below. 
+If you want to use the the `BERT` language model (more specifically, `distilbert-base-uncased`) to encode sentences for 
+downstream applications, you must use the code below. Now, you can compute distance among sentences by using their 
+representational vectors. In the example, as expected, the distance between `vectors[0]` and `vectors[1]` is less than 
+the distance between `vectors[0]` and `vectors[2]`.
 
 ```python
 from sent2vec.vectorizer import Vectorizer
@@ -43,11 +45,7 @@ sentences = [
 ]
 vectorizer = Vectorizer()
 vectors = vectorizer.bert(sentences)
-```
-Having the corresponding vectors, you can compute distance among vectors. Here, as expected, the distance between 
-`vectors[0]` and `vectors[1]` is less than the distance between `vectors[0]` and `vectors[2]`.
 
-```python
 dist_1 = cosine_distance(vectors[0], vectors[1])
 dist_2 = cosine_distance(vectors[0], vectors[2])
 
@@ -55,21 +53,27 @@ print('dist_1: {}'.format(dist_1), 'dist_2: {}'.format(dist_2))
 dist_1: 0.043, dist_2: 0.192
 ```
 
-If you want to use a `word2vec` approach instead, you must first split sentences to lists of words using the 
+If you want to use a word2vec approach instead, you must first split sentences to lists of words using the 
 `sent2words` method. In this stage, you can customized the list of stop-words by adding or removing to/from the default
 list. When you extract the most important words in sentences, you can compute the sentence embeddings using the `w2v`
 method. This method computes the average of vectors corresponding to the remaining words using the code bleow. 
 ```python
+from sent2vec.vectorizer import Vectorizer
+
 sentences = [
     "Alice is in the Wonderland.",
     "Alice is not in the Wonderland.",
 ]
-model_path = os.path.join(os.path.abspath(os.getcwd()), 'glove-wiki-gigaword-300')
 vectorizer = Vectorizer()
 words = vectorizer.sent2words(sentences, remove_stop_words=['not'], add_stop_words=[])
+model_path = os.path.join(os.path.abspath(os.getcwd()), 'glove-wiki-gigaword-300')
 vectors = vectorizer.w2v(words, model_path= model_path)
+
+print(words)
+[['alice', 'wonderland'], ['alice', 'not', 'wonderland']]
 ```
-As you can see above, you can use different `word2ved` model by sending it to the `w2v` method. 
+As seen above, you can use different word2ved model by sending its path to the `w2v` method. You can use a pre-trained
+model or a customized one.  
 
 And, that's pretty much it!
 

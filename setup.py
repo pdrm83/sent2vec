@@ -10,7 +10,7 @@ README = (HERE / "README.md").read_text()
 # This call to setup() does all the work
 setup(
     name="sent2vec",
-    version="0.1.4",
+    version="0.1.6",
     description="How to encode sentences in a high-dimensional vector space, a.k.a., sentence embedding.",
     long_description=README,
     long_description_content_type="text/markdown",

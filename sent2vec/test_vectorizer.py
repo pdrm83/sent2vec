@@ -71,6 +71,7 @@ def test_sent2words():
     ]
     vectorizer = Vectorizer()
     words = vectorizer.sent2words(sentences=sentences, remove_stop_words=['not'])
+    print(words)
     assert words == [['alice', 'wonderland'], ['alice', 'not', 'wonderland']]
 
-test_sent2vec_w2v()
+test_sent2words()
