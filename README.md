@@ -10,8 +10,9 @@ believe that a flexible sentence embedding library is needed to build prototypes
 project. In the early releases, you will have access to the standard encoders. We will add more curated techniques in 
 the later releases. Hope you can use this library in your exciting NLP projects.
 
-## Library
-The package requires the following libraries:
+## Install
+The `sent2vec` is developed to help you prototype faster. That is why it has many dependencies on other libraries. The 
+module requires the following libraries:
 
 * gensim  
 * numpy
@@ -19,12 +20,7 @@ The package requires the following libraries:
 * transformers  
 * torch  
 
-The `sent2vec` package is developed to help you prototype faster. That is why it has many dependencies on other 
-libraries.
-
-## Install
-
-It can be installed using pip:
+Then, it can be installed using pip:
 ```python
 pip3 install sent2vec
 ```
