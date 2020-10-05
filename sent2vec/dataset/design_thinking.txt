@@ -1,0 +1,113 @@
+
+Design thinking
+
+From Wikipedia, the free encyclopedia
+Jump to navigation Jump to search
+
+
+Processes by which design concepts are developed
+Design thinking refers to the cognitive, strategic and practical processes by which design concepts (proposals for new products, buildings, machines, etc.) are developed. Many of the key concepts and aspects of design thinking have been identified through studies, across different design domains, of design cognition and design activity in both laboratory and natural contexts. Design thinking is also associated with prescriptions for the innovation of products and services within business and social contexts. Some of these prescriptions have been criticized for oversimplifying the design process and trivializing the role of technical knowledge and skills.[5][6]
+
+
+Contents
+1 As a process for designing
+1.1 Wicked problems
+1.2 Problem framing
+1.3 Solution-focused thinking
+1.4 Abductive reasoning
+1.5 Co-evolution of problem and solution
+1.6 Representations and modelling
+2 As a process for innovation
+2.1 Inspiration
+2.1.1 Empathy
+2.2 Ideation: Divergent and convergent thinking
+2.3 Implementation and prototyping
+3 Application
+3.1 In business
+3.2 In education
+3.3 In computer science
+4 History
+4.1 Timeline
+5 See also
+6 References
+7 Further reading
+As a process for designing[edit]
+Design thinking encompasses processes such as context analysis, problem finding and framing, ideation and solution generating, creative thinking, sketching and drawing, modelling and prototyping, testing and evaluating.[7] Core features of design thinking include the abilities to:
+resolve ill-defined or 'wicked' problems
+adopt solution-focused strategies
+use abductive and productive reasoning
+employ non-verbal, graphic/spatial modelling media, for example, sketching and prototyping.[8]
+Wicked problems[edit]
+Design thinking is especially useful when addressing what Horst Rittel and Melvin Webber referred to as wicked problems, which are ill-defined or tricky (as opposed to wicked in the sense of malicious).[9] Whereas for "tame" or "well-defined" problems the problem is clear, and the solution is available through applying rules or technical knowledge.[10]
+Problem framing[edit]
+Rather than accept the problem as given, designers explore the given problem and its context and may re-interpret or restructure the given problem in order to reach a particular framing of the problem that suggests a route to a solution.[11][12]
+Solution-focused thinking[edit]
+In empirical studies of three-dimensional problem solving, Bryan Lawson found architects employed solution-focused cognitive strategies, distinct from the problem-focused strategies of scientists.[13] Nigel Cross suggests that 'Designers tend to use solution conjectures as the means of developing their understanding of the problem'.[14]
+Abductive reasoning[edit]
+In the creation of new design proposals, designers have to infer possible solutions from the available problem information, their experience, and the use of non-deductive modes of thinking such as the use of analogies. This has been interpreted as a form of  Peirce's abductive reasoning, called innovative abduction.[15][16][17]
+Co-evolution of problem and solution[edit]
+In the process of designing the designer's attention typically oscillates between their understanding of the problematic context and their ideas for a solution in a process of co-evolution of problem and solution.[18][19] New solution ideas can lead to a deeper or alternative understanding of the problematic context, which in turn triggers more solution ideas.
+Representations and modelling[edit]
+Conventionally, designers communicate mostly in visual or object languages to translate abstract requirements into concrete objects.[20] These 'languages' include traditional sketches and drawings but also extend to computer models and physical prototypes. The use of representations and models is closely associated with features of design thinking such as the generation and exploration of tentative solution concepts, the identification of what needs to be known about the developing concept, and the recognition of emergent features and properties within the representations.[21][22]
+As a process for innovation[edit]
+
+
+Play media
+
+
+Design thinking example video that presents design thinking for innovation in business and society as a process of "Learn from People, Find Patterns, Design Principles, Make Tangible and Iterate Relentlessly"
+A five-phase description of the design innovation process is described by Plattner, Meinel, and Leifer as: (re)defining the problem, needfinding and benchmarking, ideating, building, testing.[23] Plattner, Meinel, and Leifer state: "While the stages are simple enough, the adaptive expertise required to choose the right inflection points and appropriate next stage is a high order intellectual activity that requires practice and is learnable."
+The process may also be thought of as a system of overlapping spaces rather than a sequence of orderly steps: inspiration, ideation, and implementation.[24] Projects may loop back through inspiration, ideation, and implementation more than once as the team refines its ideas and explores new directions.[25]
+Inspiration[edit]
+Generally, the design innovation process starts with the inspiration phase: understanding the problem or the opportunity. This understanding can be documented in a brief which includes constraints that gives the project team a framework from which to begin, benchmarks by which they can measure progress, and a set of objectives to be realized—such as price point, available technology, and market segment.[25]
+Empathy[edit]
+In their book Creative Confidence, Tom and David Kelley note the importance of empathy with clients, users, and customers as a basis for innovative design.[26][27] Designers approach users with the goal of understanding their wants and needs, what might make their life easier and more enjoyable and how technology can be useful for them. Empathic design transcends physical ergonomics to include understanding the psychological and emotional needs of people—the way they do things, why and how they think and feel about the world, and what is meaningful to them.
+Ideation: Divergent and convergent thinking[edit]
+Ideation is idea generation. The process is characterized by the alternation of divergent and convergent thinking, typical of design thinking process.To achieve divergent thinking, it may be important to have a diverse group of people involved in the process. Design teams typically begin with a structured brainstorming process of "thinking outside the box." Convergent thinking, on the other hand, aims for zooming and focusing on the different proposals to select the best choice, which permits continuation of the design thinking process to achieve the final goals.
+After collecting and sorting many ideas, a team goes through a process of pattern finding and synthesis in which it has to translate ideas into insights that can lead to solutions or opportunities for change. These might be either visions of new product offerings, or choices among various ways of creating new experiences.[25]
+Implementation and prototyping[edit]
+The third space of the design thinking innovation process is implementation, when the best ideas generated during ideation are turned into something concrete.[25]
+At the core of the implementation process is prototyping: turning ideas into actual products and services that are then tested, evaluated, iterated, and refined. A prototype, or even a rough mock-up helps to gather feedback and improve the idea. Prototypes can speed up the process of innovation because they allow quick identification of strengths and weaknesses of proposed solutions, and can prompt new ideas.
+Application[edit]
+In business[edit]
+Historically, designers tended to be involved only in the later parts of the process of new product development, focusing their attention on the aesthetics and functionality of products. Many businesses and other organisations now realise the utility of embedding design as a productive asset throughout organisational policies and practices, and design thinking has been used to help many different types of business and social organisations to be more constructive and innovative.[28][4] In the 2000s there was a significant growth of interest in design thinking as a catalyst for gaining competitive advantage within business,[29] but doubts around design thinking as a panacea for success have also been expressed.[5] Designers bring their methods into business either by taking part themselves from the earliest stages of product and service development processes[30] or by training others to use design methods and to build innovative thinking capabilities within organisations.[31]
+In education[edit]
+All forms of professional design education can be assumed to be developing design thinking in students, even if only implicitly, but design thinking is also now explicitly taught in general as well as professional education, across all sectors of education. Design as a subject was introduced into secondary schools' educational curricula in the UK in the 1970s, gradually replacing and/or developing from some of the traditional art and craft subjects, and increasingly linked with technology studies. This development sparked related research studies in both education and design.[32][20][33]
+New courses in design thinking have also been introduced at the university level, especially when linked with business and innovation studies. A notable early course of this type was introduced at Stanford University in 2003, the Hasso Plattner Institute of Design, known as the d.school.
+In the K-12 education sector, design thinking is used to enhance learning and promote creative thinking, teamwork, and student responsibility for learning.[34][35] A design-based approach to teaching and learning has also developed more widely throughout education.[36][37]
+Design thinking can now be seen in International Baccalaureate schools across the world,[38] and in Maker Education organizations.[39][40]
+In computer science[edit]
+Design thinking has been central to user-centered design and human-centered design—the dominant methods of designing human-computer interfaces—for over 40 years.[41] Design thinking is also central to recent conceptions of software development in general.[42]
+History[edit]
+Developing creativity techniques in the 1950s and new design methods in the 1960s led to the idea of design thinking as a particular approach to creatively solving problems. Among the first authors to write about design thinking were John E. Arnold in "Creative Engineering" (1959) and L. Bruce Archer in "Systematic Method for Designers" (1965).[43][44]
+John E. Arnold was one of the first authors to use the term 'design thinking'. In "Creative Engineering" (1959) he distinguishes four areas of design thinking.[43] According to Arnold, design thinking can yield (1) novel functionality, i.e. solutions that satisfy a novel need or solutions that satisfy an old need in an entirely new way, (2) higher performance levels of a solution, (3) lower production costs or (4) increased salability. Thus, according to this early concept, 'design thinking' covers all forms of product innovation, including especially incremental innovation ("higher performance") and radical innovation ("novel functionality").[45] Arnold recommends a balanced approach: Product developers should seek opportunities in all four areas of design thinking.
+It is rather interesting to look over the developmental history of any product or family of products and try to classify the changes into one of the four areas ... Your group, too, might have gotten into a rut and is inadvertently doing all of your design thinking in one area and is missing good bets in other areas.
+— J.E. Arnold, 1959/2016, p. 119[43]
+Although L. Bruce Archer's "Systematic Method for Designers" (1965)[44] was concerned primarily with a systematic process of designing, it also expressed a need to broaden the scope of conventional design: "Ways have had to be found to incorporate knowledge of ergonomics, cybernetics, marketing and management science into design thinking". Archer was also developing the relationship of design thinking with management: "The time is rapidly approaching when design decision making and management decision making techniques will have so much in common that the one will become no more than the extension of the other".[46]
+The notion of design as a "way of thinking" in the sciences can be traced to Herbert A. Simon's 1969 book The Sciences of the Artificial,[47] and in design engineering to Robert McKim's 1973 book Experiences in Visual Thinking.[48] Bryan Lawson's 1980 book How Designers Think, primarily addressing design in architecture, began a process of generalising the concept of design thinking.[49] A 1982 article by Nigel Cross, "Designerly Ways of Knowing", established some of the intrinsic qualities and abilities of design thinking that also made it relevant in general education and thus for wider audiences.[20] Peter Rowe's 1987 book Design Thinking, which described methods and approaches used by architects and urban planners, was a significant early usage of the term in the design research literature.[50] An international series of research symposia in design thinking began at Delft University of Technology in 1991.[51][52]
+Rolf Faste expanded on McKim's work at Stanford University in the 1980s and 1990s,[53][54] teaching "design thinking as a method of creative action."[55] Design thinking was adapted for business purposes by Faste's Stanford colleague David M. Kelley, who founded the design consultancy IDEO in 1991.[56] Richard Buchanan's 1992 article "Wicked Problems in Design Thinking" expressed a broader view of design thinking as addressing intractable human concerns through design.[57]
+Timeline[edit]
+pre-1960
+The origins of design thinking partially lie in the development of creativity techniques in the 1950s.
+1960s
+The first notable books on methods of creativity are published by William J. J. Gordon (1961)[58] and Alex Faickney Osborn (1963).[59]
+The 1962 Conference on Systematic and Intuitive Methods in Engineering, Industrial Design, Architecture and Communications, London, UK, catalyses interest in studying design processes and developing new design methods.[60]
+Books on methods and theories of design in different fields are published by Morris Asimow (1962) (engineering),[61] Christopher Alexander (1964) (architecture),[62] L. Bruce Archer (1965) (industrial design),[44] and John Chris Jones (1970) (product and systems design).[63]
+1970s
+Don Koberg and Jim Bagnall pioneer a 'soft systems' design process for dealing with the problems of 'everyday life' in their book The Universal Traveler.[64]
+Horst Rittel and Melvin Webber publish "Dilemmas in a General Theory of Planning" showing that design and planning problems are wicked problems as opposed to "tame", single disciplinary, problems of science.[65]
+L. Bruce Archer extends inquiry into designerly ways of knowing, claiming: "There exists a designerly way of thinking and communicating that is both different from scientific and scholarly ways of thinking and communicating, and as powerful as scientific and scholarly methods of inquiry when applied to its own kinds of problems."[66]
+1980s
+The 1980s bring the rise of human-centered design and the rise of design-centered business management.
+Donald Schön publishes The Reflective Practitioner in which he aims to establish "an epistemology of practice implicit in the artistic, intuitive processes that [design and other] practitioners bring to situations of uncertainty, instability, uniqueness and value conflict."[11]
+1990s
+The first symposium on Research in Design Thinking is held at Delft University, The Netherlands, in 1991.[51]
+IDEO design consultancy is formed by combining three industrial design companies. They are one of the first design companies to showcase their design process, based on design methods and design thinking.
+2000s
+The start of the 21st century brings a significant increase in interest in design thinking as the term becomes popularized in the business press. Books about how to create a more design-focused workplace where innovation can thrive are written for the business sector by, amongst others, Richard Florida (2002),[67] Daniel Pink (2006),[68] Roger Martin (2007),[69] Tim Brown (2009),[28] Thomas Lockwood (2010),[70] Vijay Kumar (2012).[71]
+The design approach also becomes extended and adapted to tackle the design of services, marking the beginning of the service design movement.[72]
+2005: Stanford University's d.school begins to teach design thinking as a generalisable approach to technical and social innovation.[23]
+2010s
+2015: Jenna Leonardo, Katie Kirsch, Rachel H. Chung and Natalya Thakur from Stanford University's d.school found Girls Driving for a Difference[73] to teach design thinking to young girls across the United States.[74]
+2018: In the Harvard Business Review Jeanne Liedtka claims "design thinking works" in business.[75]
+

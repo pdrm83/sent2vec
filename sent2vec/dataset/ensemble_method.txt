@@ -1,0 +1,84 @@
+I write this article to describe the significance of ensemble methods in the industry through my own story.
+In this article, I stay away from explaining classical methods since various resources exist.
+Although, I want to show you the strength of ensemble methods and the way that you can realize it.
+I aim this by sharing a story of an ensemble method that we invented years ago and is still alive under Facebook ownership.
+The ensemble methods either a classic one or one designed by you can work much better than your expectation. 
+I promise.
+First, let me tell you how the story started.
+I was the lead in the machine learning team of a start-up company working on a smart gadget.
+The gadget was aimed to identify hand gestures based on muscle signals. 
+The gadget had eight sensors sitting on the forearm and recording muscle signals.
+We were in the early stage and the product was not ready.
+Our prototype surprised us many times by its functionality in data recording.
+Plus, we were not certain about possible gestures that should have been targeted.
+Nevertheless, we had to design a gesture recognition engine from the early days since we had demos here and there.
+
+The base classifier does not need to be a weak classifier.
+It is recommended to build a model based on a large volume of data.
+However, it was obvious for us that the quality of data recorded by the prototype was poor.
+Plus, the use cases were not fixed yet.
+So, our efforts to collect a large volume of data with the prototype could be wasted.
+So, I decided to design a base classifier that did not need that much data but still had a mediocre performance.
+I introduced a vector classifier as the base classifier that used cosine similarity to evaluate the class membership.
+The vector classifier was better than a weak classifier (slightly better than a random classifier) for us but it still was far away from an acceptable classifier. 
+This was the first step to design an ensemble method that lives years after under Facebook ownership.
+
+The base classifiers should be built upon the same algorithm.
+The ensemble classifier is about combining or aggregating several classifiers regardless of their types or algorithms.
+It is also recommended that the base classifiers should be independent of each other.
+Knowing that I decided to develop a large number of simple base classifiers with a similar algorithm rather than a few base classifiers with different algorithms.
+This decision was inspired by intuition from the random forest algorithm where its base classifiers have a similar algorithm.
+You can also think of Adaboost that aggregates a series of one-level decision trees; still a similar algorithm.
+Having similar base classifiers also gave me an opportunity to gain better insights, then control, on the ensemble method since the behavior of the base classifier was extensively studied during the process.
+The next question was how we should aggregate the base classifiers though.
+You should use same algorithm for the base classifiers.
+This gives you a better chance of having control on the evolution of your ensemble classifier.
+
+The strategy to aggregate base classifiers must be well-designed.
+There are different classic strategies to aggregate base classifiers that are briefly listed below.
+After this overview, I explain what strategy we used.
+The algorithm learns the base classifiers in an adaptive way using exaggeration or attention mechanisms.
+This means an algorithm pays more attention to the areas where the base classifiers fail.
+This helps reduce the bias in the prediction. These methods are often called Boosting.
+The algorithm learns the base classifiers in parallel with no interaction.
+Each base classifier is learned on a randomly generated set of data that existed in the training dataset.
+This helps reduce the variance in the prediction.
+These methods are often called Bagging.
+The algorithm learns the base classifiers in parallel with no interaction.
+Each base classifier is learned on the whole training dataset.
+Then, it combines the results of the base classifiers by training a meta-model that takes the preliminary results and creates the final prediction.
+Here, I want to describe how we select a strategy to aggregate the results of base classifiers.
+There is a bias-variance trade-off in machine learning problems.
+We had it as well.
+However, we decided to target this challenge in a different way compared to the textbook suggestions.
+We introduced two models: the population model and the personalized model.
+The population model was aimed to work flawlessly for a large group of people, not everyone though.
+This model was learned using the training dataset.
+The personalized model was aimed to work for a small group of users that the population model worked alright.
+This model was learned using a person’s data recorded in each session of use.
+In short, we wanted the gadget to work flawlessly for a large group of people rather than working alright for the whole people.
+We decided to improve bias with much less attention to variance in the population model.
+Therefore, strategy 2 aiming to reduce variance could not be a choice.
+We had another challenge as well. Users could wear the gadget in numerous forms regarding orientation and rotation.
+So, the base classifiers must be adjusted each time users wear the gadget.
+We spent a lot of time and energy developing an algorithm that could adjust the base classifiers efficiently that is out of the scope of this article.
+In boosting algorithms, base classifiers are designed in a sequential schema that creates interdependencies and, therefore, complexities.
+Therefore, strategy 1 could not be a choice either.
+A good strategy to build a strong classifier is to aggregate a large number of simple base classifiers trained with the same algorithm but different datasets and/or hyperparameters using a model-stacking approach.
+We selected the model stacking strategy as you can guess.
+The meta-model that we designed was a combination of a probabilistic classifier and a voting mechanism. 
+We worked with time-series data that its length was not fixed.
+For example, a gesture could take one second and another gesture could take two seconds.
+So, you can add a large number of hyperparameter tunning to this list.
+The model stacking strategy with a large number of flexible base classifiers solved our problem elegantly.
+
+In short, the philosophy behind ensemble methods is to use “wisdom of weighted crowds of experts”.
+I love this expression that is quoted from the artificial intelligence class taught by professor Patrick Winston in MIT OpenCourseWare.
+In industry, you often have many unknowns but you are asked to deliver results on a regular basis.
+That does not happen by applying methods that take a lot of time to learn and tune.
+Plus, you always want to design a classifier that can be enhanced in the future.
+The ensemble methods can be the right approach.
+It would be excellent to develop a generalized method that can address different problems.
+However, you may not be able to come up with such a method.
+Nevertheless, if you target an industry problem with an ensemble approach you never regret it.
+

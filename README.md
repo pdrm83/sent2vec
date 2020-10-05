@@ -54,7 +54,7 @@ assert dist_1 < dist_2
 ```
 
 If you want to use a word2vec approach instead, you must first split sentences into lists of words using the 
-`sent2words` method from the `Splitter` class. In this stage, you can customize the list of stop-words by adding or 
+`sent2words` method from the `Splitter` class. In this step, you can customize the list of stop-words by adding or 
 removing to/from the default list. When you extract the most important words in sentences, you can compute the sentence
 embeddings using the `word2vec` method from the `Vectorizer` class. This method computes the average of vectors 
 corresponding to the remaining words using the code below. 
@@ -73,7 +73,7 @@ splitter.sent2words(sentences=sentences, remove_stop_words=['not'], add_stop_wor
 # print(splitter.words)
 # [['alice', 'wonderland'], ['alice', 'not', 'wonderland']]
 vectorizer = Vectorizer()
-vectorizer.word2vec(splitter.words, pretrained_vectors_path= MODEL_PATH)
+vectorizer.word2vec(splitter.words, pretrained_vectors_path= PRETRAINED_VECTORS_PATH)
 vectors = vectorizer.vectors
 ```
 As seen above, you can use different word2vec models by sending its path to the `word2vec` method. You can use a 
