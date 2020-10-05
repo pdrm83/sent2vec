@@ -1,5 +1,5 @@
 gensim
-numpy
 spacy
+numpy
 torch
 transformers
