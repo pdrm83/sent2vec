@@ -1,7 +1,8 @@
 [![license](https://img.shields.io/badge/license-MIT-success)](https://github.com/pdrm83/Sent2Vec/blob/master/LICENSE.md)
 [![doc](https://img.shields.io/badge/docs-Medium-blue)](https://towardsdatascience.com/how-to-compute-sentence-similarity-using-bert-and-word2vec-ab0663a5d64)
 
-# How to Compute Sentence Embedding - An Open Source Project
+# Sent2Vec 
+## How to Compute Sentence Embedding Fast and Flexible
 
 In the past, we mostly encode text data using, for example, one-hot, term frequency, or TF-IDF (normalized term 
 frequency). There are many challenges to these techniques. In recent years, the latest advancements give us the
