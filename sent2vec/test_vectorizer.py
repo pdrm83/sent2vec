@@ -4,8 +4,11 @@ from scipy import spatial
 from sent2vec.vectorizer import Vectorizer
 from sent2vec.splitter import Splitter
 
-MODEL_PATH = '/Users/pedramataee/gensim-data/glove-wiki-gigaword-300'
-PRETRAINED_VECTORS_PATH = os.path.join(MODEL_PATH, 'glove-wiki-gigaword-300')
+WIKI_PATH = '/Users/pedramataee/gensim-data/glove-wiki-gigaword-300'
+PRETRAINED_VECTORS_PATH_WIKI = os.path.join(WIKI_PATH, 'glove-wiki-gigaword-300')
+
+FASTTEXT_NEWS_PATH = '/Users/pedramataee/gensim-data/fasttext-wiki-news-subwords-300'
+PRETRAINED_VECTORS_PATH_FASTTEXT = os.path.join(FASTTEXT_NEWS_PATH, 'fasttext-wiki-news-subwords-300')
 
 
 def test_bert_01():
@@ -42,7 +45,7 @@ def test_word2vec():
     splitter = Splitter()
     splitter.sent2words(sentences, add_stop_words=['distilbert', 'vectorizing'])
     vectorizer = Vectorizer()
-    vectorizer.word2vec(splitter.words, pretrained_vectors_path=PRETRAINED_VECTORS_PATH)
+    vectorizer.word2vec(splitter.words, pretrained_vectors_path=PRETRAINED_VECTORS_PATH_WIKI)
     dist_1 = spatial.distance.cosine(vectorizer.vectors[0], vectorizer.vectors[1])
     dist_2 = spatial.distance.cosine(vectorizer.vectors[0], vectorizer.vectors[2])
     assert dist_1 < dist_2
@@ -60,9 +63,31 @@ def test_complete():
 
     splitter = Splitter()
     splitter.sent2words(sentences=sentences, remove_stop_words=['not'], add_stop_words=[])
-    vectorizer.word2vec(splitter.words, pretrained_vectors_path=PRETRAINED_VECTORS_PATH)
+    vectorizer.word2vec(splitter.words, pretrained_vectors_path=PRETRAINED_VECTORS_PATH_WIKI)
     vectors_w2v = vectorizer.vectors
     dist_w2v = spatial.distance.cosine(vectors_w2v[0], vectors_w2v[1])
 
     print('dist_bert: {0}, dist_w2v: {1}'.format(dist_bert, dist_w2v))
     assert dist_w2v > dist_bert
+
+
+def test_models():
+    sentences = ["'Artificial Intelligence: Unorthodox Lessons' is an amazing book to gain insights about AI."]
+    splitter = Splitter()
+    splitter.sent2words(sentences=sentences)
+    vectorizer = Vectorizer()
+    vectorizer.word2vec(splitter.words, pretrained_vectors_path=PRETRAINED_VECTORS_PATH_WIKI)
+    vectors_wiki = vectorizer.vectors
+
+    sentences = ["'Artificial Intelligence: Unorthodox Lessons' is an amazing book to gain insights about AI."]
+    splitter = Splitter()
+    splitter.sent2words(sentences=sentences)
+    vectorizer = Vectorizer()
+    vectorizer.word2vec(splitter.words, pretrained_vectors_path=PRETRAINED_VECTORS_PATH_WIKI)
+    vectors_fasttext = vectorizer.vectors
+
+    dist = spatial.distance.cosine(vectors_wiki, vectors_fasttext)
+    print(dist)
+
+
+test_models()

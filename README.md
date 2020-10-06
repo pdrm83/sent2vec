@@ -1,4 +1,4 @@
-# A Generic Sentence Embedding Library
+Sentence Embedding - An Open Source Library to Build Proof of Concepts Fast
 
 In the past, we mostly encode text data using, for example, one-hot, term frequency, or TF-IDF (normalized term 
 frequency). There are many challenges to these techniques. In recent years, the latest advancements give us the

@@ -40,7 +40,7 @@ class Splitter:
 
     def text2words(self, texts):
         doc = nlp(texts)
-        words, tokenized_texts, skl_texts = [], [], []
+        tokenized_texts = []
         for w in doc:
             is_clean = w.text != '\n' and not w.is_stop and not w.is_punct and not w.like_num
             if is_clean:

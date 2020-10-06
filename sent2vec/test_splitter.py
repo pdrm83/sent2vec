@@ -21,10 +21,10 @@ def test_text2sents():
 
 
 def test_text2words_01():
-    texts = "This is an awesome book to learn NLP. DistilBERT is an amazing NLP model. We can interchangeably use " \
-            "embedding, encoding, or vectorizing."
+    texts = ["This is an awesome book to learn NLP. DistilBERT is an amazing NLP model. We can interchangeably use " \
+             "embedding, encoding, or vectorizing."]
     splitter = Splitter()
-    splitter.text2words(texts=texts)
+    splitter.text2words(texts=texts[0])
     assert splitter.words[0] == 'awesome'
 
 
