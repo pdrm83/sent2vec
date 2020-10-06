@@ -1,4 +1,4 @@
-![license](https://img.shields.io/badge/license-MIT-success)](https://github.com/pdrm83/Sent2Vec/blob/master/LICENSE.md)
+[![license](https://img.shields.io/badge/license-MIT-success)](https://github.com/pdrm83/Sent2Vec/blob/master/LICENSE.md)
 [![doc](https://img.shields.io/badge/docs-Medium-blue)](https://towardsdatascience.com/how-to-compute-sentence-similarity-using-bert-and-word2vec-ab0663a5d64)
 
 # Sentence Embedding - An Open Source Library to Build Proof of Concepts Fast
