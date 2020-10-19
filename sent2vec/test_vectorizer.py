@@ -36,6 +36,28 @@ def test_bert_02():
     assert dist_1 < dist_2
 
 
+def test_bert_03():
+    sentences = [
+        "401k retirement accounts",
+        "401k retirement accounts"
+    ]
+    vectorizer = Vectorizer()
+    vectorizer.bert(sentences)
+    dist = spatial.distance.cosine(vectorizer.vectors[0], vectorizer.vectors[1])
+    assert dist == 0
+
+
+def test_bert_04():
+    sentences = ["401k retirement accounts"]
+    vectorizer = Vectorizer()
+    vectorizer.bert(sentences)
+    vec_1 = vectorizer.vectors[0]
+    vectorizer.bert(sentences)
+    vec_2 = vectorizer.vectors[0]
+    dist = spatial.distance.cosine(vec_1, vec_2)
+    assert dist == 0
+
+
 def test_word2vec():
     sentences = [
         "This is an awesome book to learn NLP.",
@@ -88,6 +110,3 @@ def test_models():
 
     dist = spatial.distance.cosine(vectors_wiki, vectors_fasttext)
     print(dist)
-
-
-test_models()
