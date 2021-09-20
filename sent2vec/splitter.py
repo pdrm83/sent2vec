@@ -3,7 +3,7 @@ import re
 
 import spacy
 
-os.environ['LANGUAGE_MODEL_SPACY'] = "en_core_web_sm"
+os.environ['LANGUAGE_MODEL_SPACY'] = "en_core_web_md"
 nlp = spacy.load(os.environ['LANGUAGE_MODEL_SPACY'])
 sentencizer = nlp.create_pipe("sentencizer")
 nlp.add_pipe(sentencizer)

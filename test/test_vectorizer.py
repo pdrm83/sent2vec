@@ -1,15 +1,9 @@
 import os
 from scipy import spatial
 
+from sent2vec.constants import PRETRAINED_VECTORS_PATH_WIKI
 from sent2vec.vectorizer import Vectorizer
 from sent2vec.splitter import Splitter
-
-WIKI_PATH = '/Users/pedramataee/gensim-data/glove-wiki-gigaword-300'
-PRETRAINED_VECTORS_PATH_WIKI = os.path.join(WIKI_PATH, 'glove-wiki-gigaword-300')
-
-FASTTEXT_NEWS_PATH = '/Users/pedramataee/gensim-data/fasttext-wiki-news-subwords-300'
-PRETRAINED_VECTORS_PATH_FASTTEXT = os.path.join(FASTTEXT_NEWS_PATH, 'fasttext-wiki-news-subwords-300')
-
 
 def test_bert_01():
     sentences = [

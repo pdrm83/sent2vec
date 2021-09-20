@@ -1,0 +1,74 @@
+version: 2.1
+orbs:
+  node: circleci/node@3.0.0
+
+jobs:
+  test:
+    docker:
+      - image: pdrm83/nlp-essentials:latest
+        auth:
+          username: $USERNAME
+          password: $PASSWORD
+    environment:
+      - USERNAME: pdrm83
+      - PASSWORD: bi9&3v??NFXpSEk 
+    working_directory: ~/sent2vec
+    steps:
+      - checkout
+      - run: 
+          name: Install PyTest
+          command:  |
+            python3 -m pip install --upgrade pip
+            pip3 install pytest
+      - run: 
+          name: Install Sent2Vec
+          command:  pip install .
+      - run: 
+          name: Run PyTest
+          command:  pytest 
+      - store_test_results:
+          path: ./src/test-results/
+      - store_artifacts:
+          path: ./src/test-results/
+  build:
+    docker:
+      - image: pdrm83/server:0.8
+    working_directory: ~/sent2vec
+    steps:
+      - checkout
+      - run: 
+          name: Install Twine
+          command:  |
+            python3 -m pip install --upgrade pip
+            pip3 install twine
+      - run:
+          name: Build Package
+          command: python3 setup.py sdist bdist_wheel
+      - run:
+          name: Upload to PyPi
+          command: |
+            echo $PYPI_PASSWORD
+            twine upload dist/* --username pdrm83 --password $PYPI_PASSWORD
+
+workflows: 
+  version: 2
+  Test:
+    jobs:
+      - test
+  Build:
+    jobs:
+      - build:
+          filters:
+            branches:
+              only:
+                - release
+  Nightly:
+    triggers:
+      - schedule:
+          cron: "0 0 * * *"
+          filters:
+            branches:
+              only:
+                - master
+    jobs:
+      - test

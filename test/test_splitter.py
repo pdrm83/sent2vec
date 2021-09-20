@@ -1,6 +1,8 @@
+import os
 import re
-from sent2vec.splitter import Splitter
 
+from sent2vec.constants import DATA_DIR
+from sent2vec.splitter import Splitter
 
 def test_sent2words():
     sentences = [
@@ -29,18 +31,20 @@ def test_text2words_01():
 
 
 def test_text2words_02():
-    with open('dataset/ensemble_method.txt', 'r') as file:
+    file_name = os.path.join(DATA_DIR, 'ensemble_method.txt')
+    with open(file_name, 'r') as file:
         texts = file.read().replace('\n', '')
 
     splitter = Splitter()
     splitter.text2words(texts=texts)
-    assert len(splitter.words) == 571
+    assert len(splitter.words) == 582
     assert splitter.words[0] == 'write'
 
 
 def test_text2words_03():
     # TODO
-    with open('dataset/negotiation_tips.txt', 'r') as file:
+    file_name = os.path.join(DATA_DIR, 'negotiation_tips.txt')
+    with open(file_name, 'r') as file:
         texts = file.read().replace('\n', '')
 
     def cleanerizer(texts):
