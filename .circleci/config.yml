@@ -7,11 +7,8 @@ jobs:
     docker:
       - image: pdrm83/nlp-essentials:latest
         auth:
-          username: $USERNAME
-          password: $PASSWORD
-    environment:
-      - USERNAME: pdrm83
-      - PASSWORD: bi9&3v??NFXpSEk 
+          username: $USERNAME_DOCKERHUB
+          password: $PASSWORD_DOCKERHUB
     working_directory: ~/sent2vec
     steps:
       - checkout
