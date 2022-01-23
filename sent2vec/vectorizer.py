@@ -17,8 +17,8 @@ class Vectorizer:
                                                             ppb.DistilBertTokenizer,
                                                             pretrained_weights)
         tokenizer = tokenizer_class.from_pretrained(pretrained_weights)
-        # Move model to device
         model = model_class.from_pretrained(pretrained_weights)
+        # Move model to device
         model = model.to(device)
         tokenized = list(map(lambda x: tokenizer.encode(x, add_special_tokens=True), sentences))
 
