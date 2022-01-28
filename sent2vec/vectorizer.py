@@ -20,6 +20,7 @@ class Vectorizer:
         model = model_class.from_pretrained(pretrained_weights)
         # Move model to device
         model = model.to(device)
+        model.eval()
         tokenized = list(map(lambda x: tokenizer.encode(x, add_special_tokens=True), sentences))
 
         max_len = 0
@@ -40,8 +41,10 @@ class Vectorizer:
         self.vectors = vectors
 
     def word2vec(self, words, pretrained_vectors_path, ensemble_method='average'):
-        model = gensim.models.KeyedVectors.load_word2vec_format(pretrained_vectors_path)
-
+        if pretrained_vectors_path[-3:] == 'bin':
+            model = gensim.models.KeyedVectors.load_word2vec_format(pretrained_vectors_path, binary=True)
+        else:
+            model = gensim.models.KeyedVectors.load_word2vec_format(pretrained_vectors_path)
         vectors = []
         for element in words:
             temp = []
