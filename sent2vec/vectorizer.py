@@ -1,5 +1,5 @@
 import numpy as np
-
+import os
 import gensim
 import torch
 import transformers as ppb
@@ -41,10 +41,15 @@ class Vectorizer:
         self.vectors = vectors
 
     def word2vec(self, words, pretrained_vectors_path, ensemble_method='average'):
-        if pretrained_vectors_path[-3:] == 'bin':
+        _, file_extension = os.path.splitext(pretrained_vectors_path)
+        # Checks if file extension is binary
+        if file_extension == '.bin':
             model = gensim.models.KeyedVectors.load_word2vec_format(pretrained_vectors_path, binary=True)
-        else:
+        elif file_extension == '.txt':
             model = gensim.models.KeyedVectors.load_word2vec_format(pretrained_vectors_path)
+        else:
+            raise IOError(f'The file extension {file_extension} is not valid. Word2vec valid formats are ".txt" and ".bin".')
+
         vectors = []
         for element in words:
             temp = []
