@@ -10,6 +10,7 @@ class Vectorizer:
         self.vectors = []
         self.use_bert = True
         if model == 'bert':
+            print(f'Initializing Bert {pretrained_weights}!')
             device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
             print(f'Vectorization done on {device} device')
             model_class, tokenizer_class, pretrained_weights = (ppb.DistilBertModel,
@@ -18,6 +19,7 @@ class Vectorizer:
             self.tokenizer = tokenizer_class.from_pretrained(pretrained_weights)
             self.model = model_class.from_pretrained(pretrained_weights)
         elif model == 'word2vec':
+            print('Initializing word2vec!')
             self.use_bert = False
             self.ensemble_method = ensemble_method
             _, file_extension = os.path.splitext(pretrained_vectors_path)
@@ -32,6 +34,7 @@ class Vectorizer:
             raise  NameError(f'Wrong model name {model} passed.')
 
     def vectorize(self, input_text):
+        ## Insert assertations HERE
         if self.use_bert:
             sentences = input_text
             model = self.model.to(self.device)
