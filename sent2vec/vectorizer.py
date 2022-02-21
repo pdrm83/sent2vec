@@ -6,8 +6,31 @@ import transformers as ppb
 
 
 class Vectorizer:
-    def __init__(self):
+    def __init__(self, model='bert', pretrained_weights='distilbert-base-uncased', pretrained_vectors_path=None):
         self.vectors = []
+        self.use_bert = True
+        if model == 'bert':
+            device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+            print(f'Vectorization done on {device} device')
+            model_class, tokenizer_class, pretrained_weights = (ppb.DistilBertModel,
+                                                                ppb.DistilBertTokenizer,
+                                                                pretrained_weights)
+            self.tokenizer = tokenizer_class.from_pretrained(pretrained_weights)
+            self.model = model_class.from_pretrained(pretrained_weights)
+        elif model == 'word2vec':
+            self.use_bert = False
+            _, file_extension = os.path.splitext(pretrained_vectors_path)
+            # Checks if file extension is binary
+            if file_extension == '.bin':
+                self.model = gensim.models.KeyedVectors.load_word2vec_format(pretrained_vectors_path, binary=True)
+            elif file_extension == '.txt':
+                self.model = gensim.models.KeyedVectors.load_word2vec_format(pretrained_vectors_path, ensemble_method='average')
+            else:
+                raise IOError(f'The file extension {file_extension} is not valid. Word2vec valid formats are ".txt" and ".bin".')
+        else:
+            raise  NameError(f'Wrong model name {model} passed.')
+
+
 
     def bert(self, sentences, pretrained_weights='distilbert-base-uncased'):
         # Checks if cuda is available and assigns device
