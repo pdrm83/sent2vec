@@ -19,6 +19,7 @@ class Vectorizer:
             self.tokenizer = tokenizer_class.from_pretrained(pretrained_weights)
             self.model = model_class.from_pretrained(pretrained_weights)
         elif model == 'word2vec':
+            assert pretrained_vectors_path, 'Need to pass a valid path to load word2vec'
             print('Initializing word2vec!')
             self.use_bert = False
             self.ensemble_method = ensemble_method
@@ -34,7 +35,15 @@ class Vectorizer:
             raise  NameError(f'Wrong model name {model} passed.')
 
     def vectorize(self, input_text):
-        ## Insert assertations HERE
+
+        def assertion_check(is_bert, text):
+            if (is_bert and type(text[0]) == str) | (not is_bert and type(text[0]) == list):
+                return True
+            else:
+                return False
+
+        assert type(input_text) == list, 'A list must be passed!'
+        assert assertion_check(self.use_bert, input_text), 'Wrong inputs to the model!'
         if self.use_bert:
             sentences = input_text
             model = self.model.to(self.device)
