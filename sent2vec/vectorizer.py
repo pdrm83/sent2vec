@@ -11,8 +11,8 @@ class Vectorizer:
         self.use_bert = True
         if model == 'bert':
             print(f'Initializing Bert {pretrained_weights}!')
-            device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-            print(f'Vectorization done on {device} device')
+            self.device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+            print(f'Vectorization done on {self.device} device')
             model_class, tokenizer_class, pretrained_weights = (ppb.DistilBertModel,
                                                                 ppb.DistilBertTokenizer,
                                                                 pretrained_weights)
