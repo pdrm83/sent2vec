@@ -12,7 +12,7 @@ class BaseVectorizer():
         self.pretrained_vectors_path = kwargs.get('pretrained_vectors_path')
         self.ensemble_method = kwargs.get('ensemble_method', 'average')
     
-    def load_model(self):
+    def _load_model(self):
         pass
 
     def _check_inputs_(self, sentences):
@@ -25,9 +25,9 @@ class BertVectorizer(BaseVectorizer):
 
     def __init__(self, pretrained_weights):
         super().__init__(pretrained_weights=pretrained_weights)
-        self.load_model()
+        self._load_model()
     
-    def load_model(self):
+    def _load_model(self):
         self.device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
         print(f'Vectorization done on {self.device} device')
         model_class, tokenizer_class, pretrained_weights = (ppb.DistilBertModel,
@@ -61,9 +61,9 @@ class Sent2vecVectorizer(BaseVectorizer):
     def __init__(self, pretrained_vectors_path, ensemble_method):
         super().__init__(pretrained_vectors_path=pretrained_vectors_path, ensemble_method=ensemble_method)
         self.splitter = Splitter()
-        self.load_model()
+        self._load_model()
     
-    def load_model(self):
+    def _load_model(self):
         assert self.pretrained_vectors_path, 'Need to pass a valid path to load word2vec'
         _, file_extension = os.path.splitext(self.pretrained_vectors_path)
         # Checks if file extension is binary
