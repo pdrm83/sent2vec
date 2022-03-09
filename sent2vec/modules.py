@@ -56,7 +56,7 @@ class BertVectorizer(BaseVectorizer):
         vectors = last_hidden_states[0][:, 0, :].cpu().numpy()
         return vectors
 
-class Sent2vecVectorizer(BaseVectorizer):
+class GensimVectorizer(BaseVectorizer):
 
     def __init__(self, pretrained_vectors_path, ensemble_method):
         super().__init__(pretrained_vectors_path=pretrained_vectors_path, ensemble_method=ensemble_method)
@@ -85,7 +85,7 @@ class Sent2vecVectorizer(BaseVectorizer):
             if self.ensemble_method == 'average':
                 element_vec = np.mean(temp, axis=0)
                 try:
-                        vectors.any()
+                    vectors.any()
                 except:
                     vectors = element_vec
                 else:

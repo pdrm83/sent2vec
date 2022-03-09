@@ -10,7 +10,7 @@ class Vectorizer:
         elif model == 'word2vec':
             assert pretrained_vectors_path, 'Need to pass a valid path to load word2vec'
             print('Initializing word2vec!')
-            self.vectorizer = Sent2vecVectorizer(pretrained_vectors_path, ensemble_method)
+            self.vectorizer = GensimVectorizer(pretrained_vectors_path, ensemble_method)
         else:
             raise  TypeError(f'Wrong model name {model} passed.')
 
@@ -18,8 +18,3 @@ class Vectorizer:
         vectors = self.vectorizer.execute(sentences)
         for idx in range(vectors.shape[0]):
             self.vectors.append(vectors[idx])
-            
-
-
-
-
