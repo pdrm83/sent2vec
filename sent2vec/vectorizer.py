@@ -2,7 +2,7 @@ from sent2vec.modules import *
 
 
 class Vectorizer:
-    def __init__(self, model='bert', pretrained_weights='distilbert-base-uncased', pretrained_vectors_path=None, ensemble_method='average'):
+    def __init__(self, model='bert', pretrained_weights='distilbert-base-uncased', pretrained_vectors_path=None, ensemble_method='average', remove_stop_words=['not'], add_stop_words=[]):
         self.vectors = []
         if model == 'bert':
             print(f'Initializing Bert {pretrained_weights}!')
@@ -10,7 +10,7 @@ class Vectorizer:
         elif model == 'word2vec':
             assert pretrained_vectors_path, 'Need to pass a valid path to load word2vec'
             print('Initializing word2vec!')
-            self.vectorizer = GensimVectorizer(pretrained_vectors_path, ensemble_method)
+            self.vectorizer = GensimVectorizer(pretrained_vectors_path, ensemble_method, remove_stop_words, add_stop_words)
         else:
             raise  TypeError(f'Wrong model name {model} passed.')
 

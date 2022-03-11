@@ -10,7 +10,9 @@ class BaseVectorizer():
     def __init__(self, **kwargs):
         self.pretrained_weights = kwargs.get('pretrained_weights')
         self.pretrained_vectors_path = kwargs.get('pretrained_vectors_path')
-        self.ensemble_method = kwargs.get('ensemble_method', 'average')
+        self.ensemble_method = kwargs.get('ensemble_method')
+        self.remove_stop_words = kwargs.get('remove_stop_words')
+        self.add_stop_words = kwargs.get('add_stop_words')
     
     def _load_model(self):
         pass
@@ -75,7 +77,7 @@ class GensimVectorizer(BaseVectorizer):
             raise IOError(f'The file extension {file_extension} is not valid. Word2vec valid formats are ".txt" and ".bin".')
     
     def execute(self, sentences):
-        self.splitter.sent2words(sentences=sentences, remove_stop_words=['not'], add_stop_words=[])
+        self.splitter.sent2words(sentences=sentences, remove_stop_words=self.remove_stop_words, add_stop_words=self.add_stop_words)
         words = self.splitter.words
         vectors = []
         for element in words:
