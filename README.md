@@ -29,6 +29,20 @@ Then, it can be installed using pip:
 pip3 install sent2vec
 ```
 
+## Documentation
+
+*class* **sent2vec.vectorizer.Vectorizer**(model='bert', pretrained_weights='distilbert-base-uncased', pretrained_vectors_path=None, ensemble_method='average', remove_stop_words=['not'], add_stop_words=[])
+
+### **Parameters**
+
+- **model**: ('bert', 'word2vec'), *default*='bert' - Specify the model to load when vectorizer is initialized
+- **pretrained_weights**: *default*='distilbert-base-uncased' - When 'bert' is called specify weights to load
+- **pretrained_vectors_path**: *default*=None - When 'word2vec' is called specify a valid path to a *.txt* or *.bin* file of weights to load. 
+*Example: save "glove.6B.300d.txt" into folder and pass `get_tmpfile("glove.6B.300d.word2vec.txt")`*
+- **ensemble_method**: *default*='average' - When 'word2vec' is called specify how word vectors are computed into sentece vectors
+- **remove_stop_words**: *default*=['not'] - When 'word2vec' is called specify words to remove from *stop words* when splitting sentences
+- **add_stop_words**: *default*=[] - When 'word2vec' is called specify words to add to *stop words* when splitting sentences
+
 ## Usage
 If you want to use the `BERT` language model (more specifically, `distilbert-base-uncased`) to encode sentences for 
 downstream applications, you must use the code below. 
@@ -41,10 +55,18 @@ sentences = [
     "We can interchangeably use embedding, encoding, or vectorizing.",
 ]
 vectorizer = Vectorizer()
-vectorizer.bert(sentences)
+vectorizer.run(sentences)
 vectors = vectorizer.vectors
 ```
-Now, you can compute distance among sentences by using their vectors. In the example, as expected, the distance between
+Default Vectorizer weights are `distilbert-base-uncased` but it's possible to pass the argument `pretrained_weights` to chose another `BERT` model.
+
+For example, to load `BERT base multilingual model`:
+
+```python
+vectorizer = Vectorizer(pretrained_weights='distilbert-base-multilingual-cased')
+```
+
+Now it's possible to compute distance among sentences by using their vectors. In the example, as expected, the distance between
 `vectors[0]` and `vectors[1]` is less than the distance between `vectors[0]` and `vectors[2]`.
 
 ```python
@@ -57,31 +79,23 @@ assert dist_1 < dist_2
 # dist_1: 0.043, dist_2: 0.192
 ```
 
-If you want to use a word2vec approach instead, you must first split sentences into lists of words using the 
-`sent2words` method from the `Splitter` class. In this step, you can customize the list of stop-words by adding or 
-removing to/from the default list. When you extract the most important words in sentences, you can compute the sentence
-embeddings using the `word2vec` method from the `Vectorizer` class. This method computes the average of vectors 
-corresponding to the remaining words using the code below. 
+If you want to use a word2vec approach instead, you must pass the argument `model` and valid path to the the model weights `pretrained_vectors_path`. Under the hood the sentences will be splitted into lists of words the `sent2words` method from the `Splitter` class.  Is it possible to customize the list of stop-words by adding or 
+removing to/from the default list. Two additional arguments (both lists) must be passed in this case: `remove_stop_words` and `add_stop_words`. 
+When you extract the most important words in sentences, by default `Vectorizer` computes the sentence embeddings using the average of vectors corresponding to the remaining words. 
 
 ```python
 from sent2vec.vectorizer import Vectorizer
-from sent2vec.splitter import Splitter
 
 sentences = [
     "Alice is in the Wonderland.",
     "Alice is not in the Wonderland.",
 ]
 
-splitter = Splitter()
-splitter.sent2words(sentences=sentences, remove_stop_words=['not'], add_stop_words=[])
-# print(splitter.words)
-# [['alice', 'wonderland'], ['alice', 'not', 'wonderland']]
-vectorizer = Vectorizer()
-vectorizer.word2vec(splitter.words, pretrained_vectors_path= PRETRAINED_VECTORS_PATH)
+vectorizer = Vectorizer(model='word2vec', pretrained_vectors_path= PRETRAINED_VECTORS_PATH, remove_stop_words=['not'], add_stop_words=[])
+vectorizer.run(sentences)
 vectors = vectorizer.vectors
 ```
 As seen above, you can use different word2vec models by sending its path to the `word2vec` method. You can use a 
 pre-trained model or a customized one.  
 
 And, that's pretty much it!
-
