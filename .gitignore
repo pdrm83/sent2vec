@@ -8,3 +8,6 @@
 out
 gen
 __pycache__
+build/
+dist/
+sent2vec.egg-info/
