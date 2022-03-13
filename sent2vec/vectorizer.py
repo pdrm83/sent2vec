@@ -2,7 +2,8 @@ from sent2vec.modules import *
 
 
 class Vectorizer:
-    def __init__(self, model='bert', pretrained_weights='distilbert-base-uncased', pretrained_vectors_path=None, ensemble_method='average', remove_stop_words=['not'], add_stop_words=[]):
+    def __init__(self, model='bert', pretrained_weights='distilbert-base-uncased', pretrained_vectors_path=None, ensemble_method='average', 
+                remove_stop_words=['not'], add_stop_words=[]):
         self.vectors = []
         if model == 'bert':
             print(f'Initializing Bert {pretrained_weights}!')

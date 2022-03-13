@@ -60,8 +60,9 @@ class BertVectorizer(BaseVectorizer):
 
 class GensimVectorizer(BaseVectorizer):
 
-    def __init__(self, pretrained_vectors_path, ensemble_method):
-        super().__init__(pretrained_vectors_path=pretrained_vectors_path, ensemble_method=ensemble_method)
+    def __init__(self, pretrained_vectors_path, ensemble_method, remove_stop_words, add_stop_words):
+        super().__init__(pretrained_vectors_path=pretrained_vectors_path, ensemble_method=ensemble_method, 
+                        remove_stop_words=remove_stop_words, add_stop_words=add_stop_words)
         self.splitter = Splitter()
         self._load_model()
     
