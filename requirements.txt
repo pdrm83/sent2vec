@@ -1,5 +1,7 @@
-gensim
-spacy
-numpy
-torch
-transformers
+-e .
+# gensim
+# spacy
+# numpy
+# torch
+# transformers
+# pytest

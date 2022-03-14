@@ -3,17 +3,19 @@ import re
 
 import spacy
 
-# Make sure to have downloaded on your machine the package "en_core_web_sm" below 
-# In case run: python -m spacy download en_core_web_sm
+# Make sure to download "en_core_web_sm" package on your machine. 
+# In case, you can run: "python -m spacy download en_core_web_sm"
 os.environ['LANGUAGE_MODEL_SPACY'] = "en_core_web_sm"
-#nlp = spacy.load(os.environ['LANGUAGE_MODEL_SPACY'])
+# nlp = spacy.load(os.environ['LANGUAGE_MODEL_SPACY'])
+
 try:
     nlp = spacy.load(os.environ['LANGUAGE_MODEL_SPACY'])
 except Exception as error:
     print(f'{error}\n\n Install "en_core_web_sm" in your environment. Try running: "python -m spacy download en_core_web_sm" \n or follow instrucions here: https://spacy.io/usage')
+
 sentencizer = nlp.add_pipe("sentencizer")
 # Below line was deprecated
-#nlp.create_pipe(sentencizer)
+# nlp.create_pipe(sentencizer)
 
 
 class Splitter:
@@ -41,7 +43,6 @@ class Splitter:
         for text in texts:
             doc = nlp(text)
             span = doc[0:5]
-            span.merge()
             sents = list(doc.sents)
             self.sentences.extend([sent for sent in sents])
 

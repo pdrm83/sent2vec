@@ -10,7 +10,7 @@ README = (HERE / "README.md").read_text()
 # This call to setup() does all the work
 setup(
     name="sent2vec",
-    version="0.2.4",
+    version="0.2.5",
     description="How to encode sentences in a high-dimensional vector space, a.k.a., sentence embedding.",
     long_description=README,
     long_description_content_type="text/markdown",
@@ -25,7 +25,13 @@ setup(
     ],
     packages=["sent2vec"],
     include_package_data=True,
-    install_requires=['transformers', 'torch', 'numpy', 'gensim', 'spacy'],
+    install_requires=[
+        'transformers', 
+        'torch', 
+        'numpy', 
+        'gensim', 
+        'spacy', 
+        'pytest'],
     entry_points={
         "console_scripts": [
             "pdrm83=sent2vec.__main__:main",
