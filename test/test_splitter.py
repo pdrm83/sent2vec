@@ -32,7 +32,7 @@ def test_text2words_01():
 
 def test_text2words_02():
     file_name = os.path.join(DATA_DIR, 'ensemble_method.txt')
-    with open(file_name, 'r') as file:
+    with open(file_name, 'r', encoding="utf8") as file:
         texts = file.read().replace('\n', '')
 
     splitter = Splitter()
@@ -57,3 +57,8 @@ def test_text2words_03():
     print(splitter.words)
     splitter.text2words(texts=texts)
     print(splitter.words)
+
+
+if __name__ == "__main__":
+    print("TEST")
+    test_text2words_02()
