@@ -76,7 +76,6 @@ class BertVectorizer(BaseVectorizer):
 class GensimVectorizer(BaseVectorizer):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.splitter = Splitter()
         self._load_model()
     
     def _load_model(self):
@@ -90,8 +89,9 @@ class GensimVectorizer(BaseVectorizer):
             raise IOError(f'The file extension {file_extension} is not valid. Word2vec valid formats are ".txt" and ".bin".')
     
     def _execute(self, sentences, **kwargs):
-        self.splitter.sent2words(sentences, remove_stop_words=kwargs.get('remove_stop_words'), add_stop_words=kwargs.get('add_stop_words'))
-        words = self.splitter.words
+        splitter = Splitter()
+        splitter.sent2words(sentences, remove_stop_words=kwargs.get('remove_stop_words'), add_stop_words=kwargs.get('add_stop_words'))
+        words = splitter.words
         vectors = []
         for element in words:
             temp = []

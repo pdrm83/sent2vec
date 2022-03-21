@@ -75,7 +75,7 @@ def test_bert_05():
     assert len(vectors) == 6
 
 
-def test_word2vec():
+def test_word2vec_01():
     sentences = [
         "This is an awesome book to learn NLP.",
         "DistilBERT is an amazing NLP model.",
@@ -89,12 +89,27 @@ def test_word2vec():
     dist_2 = spatial.distance.cosine(vectorizer.vectors[0], vectorizer.vectors[2])
     assert dist_1 < dist_2
 
+def test_word2vec_02():
+    sentences = [
+        "Alice is in the Wonderland.",
+        "Alice is not in the Wonderland.",
+    ]
+    
+    vectorizer = Vectorizer(pretrained_weights= PRETRAINED_VECTORS_PATH_WIKI)
+    vectorizer.run(sentences)
+    vectorizer.run(sentences, remove_stop_words=[])
+
+    dist_1 = spatial.distance.cosine(vectorizer.vectors[0], vectorizer.vectors[1])
+    dist_2 = spatial.distance.cosine(vectorizer.vectors[2], vectorizer.vectors[3])
+    assert (dist_1 != dist_2) & (dist_2 == 0) 
+
 
 def test_complete():
     sentences = [
         "Alice is in the Wonderland.",
         "Alice is not in the Wonderland.",
     ]
+
     vectorizer = Vectorizer()
     vectorizer.run(sentences)
     vectors_bert = vectorizer.vectors

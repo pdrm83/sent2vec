@@ -37,7 +37,7 @@ def test_text2words_02():
 
     splitter = Splitter()
     splitter.text2words(texts=texts)
-    assert len(splitter.words) == 581
+    assert len(splitter.words) == 570
     assert splitter.words[0] == 'write'
 
 
