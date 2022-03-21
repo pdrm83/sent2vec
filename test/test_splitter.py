@@ -1,8 +1,8 @@
 import os
 import re
 
-from ..sent2vec.constants import DATA_DIR
-from ..sent2vec.splitter import Splitter
+from sent2vec.constants import DATA_DIR
+from sent2vec.splitter import Splitter
 
 def test_sent2words():
     sentences = [
@@ -57,8 +57,3 @@ def test_text2words_03():
     print(splitter.words)
     splitter.text2words(texts=texts)
     print(splitter.words)
-
-
-if __name__ == "__main__":
-    print("TEST")
-    test_text2words_02()
