@@ -25,7 +25,8 @@ class Vectorizer:
             if type(sentence) != str:
                 raise TypeError(f'All items must be string type but {sentence} is type {type(sentence)}.')
         # RUN
-        vectors = self.vectorizer._execute(sentences, remove_stop_words=remove_stop_words, add_stop_words=add_stop_words)
+        self.vectorizer._execute(sentences, remove_stop_words=remove_stop_words, add_stop_words=add_stop_words)
+        vectors = self.vectorizer.vectors
         for idx in range(vectors.shape[0]):
             self.vectors.append(vectors[idx])
 
@@ -34,6 +35,7 @@ class BaseVectorizer():
     def __init__(self, **kwargs):
         self.pretrained_weights = kwargs.get('pretrained_weights')
         self.ensemble_method = kwargs.get('ensemble_method')
+        self.vectors = []
     
     def _load_model(self):
         pass
@@ -71,7 +73,7 @@ class BertVectorizer(BaseVectorizer):
             last_hidden_states = model(input_ids)
         # Move vector results back to cpu if calculation was done on GPU
         vectors = last_hidden_states[0][:, 0, :].cpu().numpy()
-        return vectors
+        self.vectors = vectors
 
 class GensimVectorizer(BaseVectorizer):
     def __init__(self, **kwargs):
@@ -104,5 +106,5 @@ class GensimVectorizer(BaseVectorizer):
                 except:
                     vectors = element_vec
                     
-        return vectors
+        self.vectors = vectors
         
