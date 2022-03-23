@@ -31,17 +31,19 @@ pip3 install sent2vec
 
 ## Documentation
 
-*class* **sent2vec.vectorizer.Vectorizer**(model='bert', pretrained_weights='distilbert-base-uncased', pretrained_vectors_path=None, ensemble_method='average', remove_stop_words=['not'], add_stop_words=[])
+*class* **sent2vec.vectorizer.Vectorizer**(pretrained_weights='distilbert-base-uncased', ensemble_method='average')
 
 ### **Parameters**
 
-- **model**: ('bert', 'word2vec'), *default*='bert' - Specify the model to load when vectorizer is initialized
-- **pretrained_weights**: *default*='distilbert-base-uncased' - When 'bert' is called specify weights to load
-- **pretrained_vectors_path**: *default*=None - When 'word2vec' is called specify a valid path to a *.txt* or *.bin* file of weights to load. 
-*Example: save "glove.6B.300d.txt" into folder and pass `get_tmpfile("glove.6B.300d.word2vec.txt")`*
-- **ensemble_method**: *default*='average' - When 'word2vec' is called specify how word vectors are computed into sentece vectors
-- **remove_stop_words**: *default*=['not'] - When 'word2vec' is called specify words to remove from *stop words* when splitting sentences
-- **add_stop_words**: *default*=[] - When 'word2vec' is called specify words to add to *stop words* when splitting sentences
+- **pretrained_weights**: str, *default*='distilbert-base-uncased' - If the string does not include an extension .txt, .gz or .bin, then Bert vectorizer is loaded using the specified weights. *Example: pass 'distilbert-base-multilingual-cased' to load Bert base multilingual model.* <br/> To load word2vec vectorizer pass a valid path to the weights file (.txt, .gz or .bin). *Example: pass 'glove-wiki-gigaword-300.gz' to load the Wiki vectors (when saved in the same folder you are running the code).*
+- **ensemble_method**: str, *default*='average' - How word vectors are computed into sentece vectors.
+
+### **Methods**
+
+run(sentences, remove_stop_words = ['not'], add_stop_words = [])
+- **sentences**: list, - List of sentences.
+- **remove_stop_words**: list, *default*=['not'] - When using sent2vec, list of words to remove from *stop words* when splitting sentences.
+- **add_stop_words**: list, *default*=[] - When using sent2vec, list of words to add to *stop words* when splitting sentences.
 
 ## Usage
 If you want to use the `BERT` language model (more specifically, `distilbert-base-uncased`) to encode sentences for 
@@ -79,9 +81,9 @@ assert dist_1 < dist_2
 # dist_1: 0.043, dist_2: 0.192
 ```
 
-If you want to use a word2vec approach instead, you must pass the argument `model` and valid path to the the model weights `pretrained_vectors_path`. Under the hood the sentences will be splitted into lists of words the `sent2words` method from the `Splitter` class.  Is it possible to customize the list of stop-words by adding or 
-removing to/from the default list. Two additional arguments (both lists) must be passed in this case: `remove_stop_words` and `add_stop_words`. 
-When you extract the most important words in sentences, by default `Vectorizer` computes the sentence embeddings using the average of vectors corresponding to the remaining words. 
+If you want to use a word2vec approach instead, you must pass a valid path to the model weights. Under the hood the sentences will be splitted into lists of words using the `sent2words` method from the `Splitter` class. It is possible to customize the list of stop-words by adding or removing to/from the default list. Two additional arguments (both lists) must be passed when the vectorizer's method .run is called: `remove_stop_words` and `add_stop_words`. 
+
+NOTE: When you extract the most important words in sentences, by default `Vectorizer` computes the sentence embeddings using the average of vectors corresponding to the remaining words. 
 
 ```python
 from sent2vec.vectorizer import Vectorizer
@@ -91,11 +93,9 @@ sentences = [
     "Alice is not in the Wonderland.",
 ]
 
-vectorizer = Vectorizer(model='word2vec', pretrained_vectors_path= PRETRAINED_VECTORS_PATH, remove_stop_words=['not'], add_stop_words=[])
-vectorizer.run(sentences)
+vectorizer = Vectorizer(pretrained_weights= PRETRAINED_VECTORS_PATH)
+vectorizer.run(sentences, remove_stop_words=['not'], add_stop_words=[])
 vectors = vectorizer.vectors
 ```
-As seen above, you can use different word2vec models by sending its path to the `word2vec` method. You can use a 
-pre-trained model or a customized one.  
 
 And, that's pretty much it!

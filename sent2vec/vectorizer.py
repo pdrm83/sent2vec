@@ -6,7 +6,22 @@ import transformers as ppb
 from sent2vec.splitter import *
 
 class Vectorizer:
-    def __init__(self, pretrained_weights = 'distilbert-base-uncased', 
+    """
+    pretrained_weights: str, default='distilbert-base-uncased'
+
+        If the string does not include an extension .txt, .gz or .bin, then Bert vectorizer is loaded using the specified weights.
+        Example: pass 'distilbert-base-multilingual-cased' to load Bert base multilingual model.
+
+        To load word2vec vectorizer pass a valid path to the weights file (.txt, .gz or .bin).
+        Example: pass 'glove-wiki-gigaword-300.gz' to load the Wiki vectors (when saved in the same folder you are running the code).
+
+    
+    ensemble_method: str, default='average'
+
+        How word vectors are computed into sentece vectors.
+    
+    """
+    def __init__(self, pretrained_weights = 'distilbert-base-uncased',
                        ensemble_method = 'average'):
         _, ext = os.path.splitext(pretrained_weights)
         self.vectors = []
