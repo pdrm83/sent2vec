@@ -120,6 +120,5 @@ class GensimVectorizer(BaseVectorizer):
                     vectors = np.vstack([vectors, element_vec])
                 except:
                     vectors = element_vec
-                    
         self.vectors = vectors
         
