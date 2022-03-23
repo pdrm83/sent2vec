@@ -1,53 +1,46 @@
 import os
 import re
-
 import spacy
 
 # Make sure to download "en_core_web_sm" package on your machine. 
 # In case, you can run: "python -m spacy download en_core_web_sm"
 os.environ['LANGUAGE_MODEL_SPACY'] = "en_core_web_sm"
-# nlp = spacy.load(os.environ['LANGUAGE_MODEL_SPACY'])
-
-try:
-    nlp = spacy.load(os.environ['LANGUAGE_MODEL_SPACY'])
-except Exception as error:
-    print(f'{error}\n\n Install "en_core_web_sm" in your environment. Try running: "python -m spacy download en_core_web_sm" \n or follow instrucions here: https://spacy.io/usage')
-
-sentencizer = nlp.add_pipe("sentencizer")
-# Below line was deprecated
-# nlp.create_pipe(sentencizer)
-
 
 class Splitter:
     def __init__(self):
         self.words = []
         self.sentences = []
+        try:
+            self.nlp = spacy.load(os.environ['LANGUAGE_MODEL_SPACY'])
+        except Exception as error:
+            print(f'{error}\n\n Install "en_core_web_sm" in your environment. Try running: "python -m spacy download en_core_web_sm" \n or follow instrucions here: https://spacy.io/usage')
+        self.sentencizer = self.nlp.add_pipe("sentencizer")
 
     def sent2words(self, sentences, **kwargs):
         add_stop_words = kwargs.get('add_stop_words', [])
         remove_stop_words = kwargs.get('remove_stop_words', [])
 
         for w in add_stop_words:
-            nlp.vocab[w].is_stop = True
+            self.nlp.vocab[w].is_stop = True
         for w in remove_stop_words:
-            nlp.vocab[w].is_stop = False
+            self.nlp.vocab[w].is_stop = False
 
         words = []
         for sentence in sentences:
-            doc = nlp(sentence.lower())
+            doc = self.nlp(sentence.lower())
             words.append([token.lemma_ for token in doc if not token.is_punct | token.is_space | token.is_stop])
 
         self.words = words
 
     def text2sents(self, texts):
         for text in texts:
-            doc = nlp(text)
+            doc = self.nlp(text)
             span = doc[0:5]
             sents = list(doc.sents)
             self.sentences.extend([sent for sent in sents])
 
     def text2words(self, texts):
-        doc = nlp(texts)
+        doc = self.nlp(texts)
         tokenized_texts = []
         for w in doc:
             is_clean = w.text != '\n' and not w.is_stop and not w.is_punct and not w.like_num
