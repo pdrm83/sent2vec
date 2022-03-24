@@ -83,7 +83,7 @@ vectorizer = Vectorizer(pretrained_weights='distilbert-base-multilingual-cased')
 ### 2. How to use Word2Vec model?
 If you want to use a Word2Vec approach instead, you must pass a valid path to the model weights. Under the hood, the sentences will be split into lists of words using the `sent2words` method from the `Splitter` class. It is possible to customize the list of stop-words by adding or removing to/from the default list. Two additional arguments (both lists) must be passed when the vectorizer's method .run is called: `remove_stop_words` and `add_stop_words`. 
 
-NOTE: The default method to computes the sentence embeddings after extracting list of vectors is average of vectors corresponding to the remaining words. 
+Note: The default method to computes the sentence embeddings after extracting list of vectors is average of vectors corresponding to the remaining words. 
 
 ```python
 from sent2vec.vectorizer import Vectorizer
