@@ -19,10 +19,13 @@ jobs:
             pip3 install pytest
       - run: 
           name: Install Sent2Vec
-          command:  pip install .
+          command:  pip3 install .
+      - run:
+          name: Install Language Model
+          command: python3 -m spacy download en_core_web_sm
       - run: 
           name: Run PyTest
-          command:  pytest 
+          command:  python3 -m pytest
       - store_test_results:
           path: ./src/test-results/
       - store_artifacts:

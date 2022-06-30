@@ -2,9 +2,10 @@ import os
 import re
 import spacy
 
-# Make sure to download "en_core_web_sm" package on your machine. 
-# In case, you can run: "python -m spacy download en_core_web_sm"
+# Make sure to download "en_core_web_sm" package on your machine.
+# In case, you can run: "python3 -m spacy download en_core_web_sm"
 os.environ['LANGUAGE_MODEL_SPACY'] = "en_core_web_sm"
+
 
 class Splitter:
     def __init__(self):
@@ -13,8 +14,9 @@ class Splitter:
         try:
             self.nlp = spacy.load(os.environ['LANGUAGE_MODEL_SPACY'])
         except Exception as error:
-            print(f'{error}\n\n Install "en_core_web_sm" in your environment. Try running: "python -m spacy download en_core_web_sm" \n or follow instrucions here: https://spacy.io/usage')
-        self.sentencizer = self.nlp.add_pipe("sentencizer")
+            print(f'{error}\n\n Install "en_core_web_sm" in your environment. '
+                  f'Try running: "python3 -m spacy download en_core_web_sm" \n '
+                  f'or follow instrucions here: https://spacy.io/usage')
 
     def sent2words(self, sentences, **kwargs):
         add_stop_words = kwargs.get('add_stop_words', [])
